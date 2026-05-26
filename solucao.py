@@ -328,7 +328,7 @@ def escrever_saida(caminho, nome_algoritmo, pista, resultado_avaliacao, n_episod
         f"=== Pista: {Path(pista).name} ===\n"
         f"Algoritmo: {nome_algoritmo} (round-robin em pistas 01-16)\n"
         f"Episódios totais de treinamento: {n_episodios_treinados}\n"
-        f"Estados populados: {resultado_avaliacao.get('estados_populados', 'N/A')}\n"
+        f"Estados populados: {resultado_avaliacao['estados_populados']}\n"
         f"Tempo de chegada (passos): {resultado_avaliacao['n_passos']}\n"
         f"Velocidade média: {resultado_avaliacao['velocidade_media']:.2f}\n"
         f"Velocidade máxima atingida: {resultado_avaliacao['velocidade_maxima']:.2f}\n"
@@ -408,7 +408,11 @@ def main():
 
     for pista in pistas_avaliar:
         env = AmbienteCarro(pista, max_steps=args.max_passos, seed=SEED)
+
         resultado = avaliar(env, agente_avaliacao)
+
+        # quantidade real de estados que o agente visitou/aprendeu
+        resultado["estados_populados"] = len(agente_avaliacao.Q)
 
         nome_pista = Path(pista).stem
 
