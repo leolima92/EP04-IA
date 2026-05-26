@@ -1,0 +1,9 @@
+=== Pista: pista_13.txt ===
+Algoritmo: Q-Learning (round-robin em pistas 01-16)
+Episódios totais de treinamento: 40000
+Estados populados: 4299
+Tempo de chegada (passos): 500
+Velocidade média: 0.59
+Velocidade máxima atingida: 1.00
+Recompensa total: -29.00
+Sucesso: NAO
