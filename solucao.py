@@ -408,7 +408,10 @@ def main():
 
     for pista in pistas_avaliar:
         env = AmbienteCarro(pista, max_steps=args.max_passos, seed=SEED)
+        estados_populados_antes = len(agente_avaliacao.Q)
+
         resultado = avaliar(env, agente_avaliacao)
+        resultado["estados_populados"] = estados_populados_antes
 
         nome_pista = Path(pista).stem
 
